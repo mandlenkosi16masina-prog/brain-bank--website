@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Tracker | BrainBank</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for budget visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar (same as dashboard.html) -->
+        <aside class="sidebar">
+            <!-- ... same sidebar content as dashboard.html ... -->
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <button class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Budget Tracker</h1>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn-primary" id="addExpenseBtn">
+                        <i class="fas fa-plus"></i> Add Expense
+                    </button>
+                </div>
+            </header>
+            
+            <div class="budget-content">
+                <!-- Budget Overview -->
+                <section class="budget-overview">
+                    <div class="budget-card total-budget">
+                        <h3>Monthly Budget</h3>
+                        <div class="amount">R5,000</div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 65%"></div>
+                        </div>
+                        <div class="budget-details">
+                            <div class="detail">
+                                <span>Spent</span>
+                                <span class="spent">R3,250</span>
+                            </div>
+                            <div class="detail">
+                                <span>Remaining</span>
+                                <span class="remaining">R1,750</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="budget-card">
+                        <h3>Spending by Category</h3>
+                        <canvas id="budgetChart"></canvas>
+                    </div>
+                </section>
+                
+                <!-- Recent Transactions -->
+                <section class="recent-transactions">
+                    <div class="section-header">
+                        <h2>Recent Transactions</h2>
+                        <div class="filter-options">
+                            <select id="transactionFilter">
+                                <option value="all">All Transactions</option>
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <table class="transactions-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Amount</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>15 Jun</td>
+                                <td>Textbooks</td>
+                                <td><span class="category-badge education">Education</span></td>
+                                <td class="expense">-R850</td>
+                                <td>
+                                    <button class="btn-icon edit-btn">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon delete-btn">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12 Jun</td>
+                                <td>Monthly Transport</td>
+                                <td><span class="category-badge transport">Transport</span></td>
+                                <td class="expense">-R600</td>
+                                <td>
+                                    <button class="btn-icon edit-btn">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon delete-btn">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Expense Modal -->
+    <div class="modal" id="expenseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Expense</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="expenseForm">
+                    <div class="form-group">
+                        <label for="expenseAmount">Amount (ZAR)</label>
+                        <input type="number" id="expenseAmount" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expenseCategory">Category</label>
+                        <select id="expenseCategory" required>
+                            <option value="">Select category</option>
+                            <option value="food">Food</option>
+                            <option value="transport">Transport</option>
+                            <option value="education">Education</option>
+                            <option value="entertainment">Entertainment</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="expenseDescription">Description</label>
+                        <input type="text" id="expenseDescription" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expenseDate">Date</label>
+                        <input type="date" id="expenseDate" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Save Expense</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../dashboard.js"></script>
+    <script>
+        // Budget Chart
+        const ctx = document.getElementById('budgetChart').getContext('2d');
+        const budgetChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Food', 'Transport', 'Education', 'Entertainment', 'Other'],
+                datasets: [{
+                    data: [1200, 600, 850, 300, 300],
+                    backgroundColor: [
+                        '#FF6384',
+                        '#36A2EB',
+                        '#FFCE56',
+                        '#4BC0C0',
+                        '#9966FF'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+</body>
+</html>

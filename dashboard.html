@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | BrainBank</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="user-profile">
+                    <img src="../Images/user-avatar.jpg" alt="User avatar" class="avatar">
+                    <div class="user-info">
+                        <h3>Thabo Mbeki</h3>
+                        <p>University of Johannesburg</p>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="dashboard.html">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="budget.html">
+                            <i class="fas fa-wallet"></i>
+                            <span>Budget Tracker</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pomodoro.html">
+                            <i class="fas fa-clock"></i>
+                            <span>Study Timer</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="notes.html">
+                            <i class="fas fa-sticky-note"></i>
+                            <span>Notes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="community.html">
+                            <i class="fas fa-users"></i>
+                            <span>Community</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="reminder.html">
+                            <i class="fas fa-bell"></i>
+                            <span>Reminders</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="sidebar-footer">
+                    <a href="#" class="settings-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="../index.html" class="logout-link">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <button class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="notification-bell">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">3</span>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="btn btn-sm btn-primary">
+                            <i class="fas fa-plus"></i> New Note
+                        </button>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="dashboard-widgets">
+                <!-- Budget Summary Widget -->
+                <div class="widget budget-summary">
+                    <div class="widget-header">
+                        <h2>Budget Summary</h2>
+                        <a href="budget.html" class="view-all">View All</a>
+                    </div>
+                    <div class="widget-content">
+                        <div class="budget-progress">
+                            <div class="progress-bar" style="width: 65%"></div>
+                        </div>
+                        <div class="budget-stats">
+                            <div class="stat">
+                                <span class="stat-label">Monthly Budget</span>
+                                <span class="stat-value">R5,000</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Spent</span>
+                                <span class="stat-value">R3,250</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Remaining</span>
+                                <span class="stat-value">R1,750</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Upcoming Tasks Widget -->
+                <div class="widget upcoming-tasks">
+                    <div class="widget-header">
+                        <h2>Upcoming Tasks</h2>
+                        <a href="reminder.html" class="view-all">View All</a>
+                    </div>
+                    <div class="widget-content">
+                        <ul class="task-list">
+                            <li>
+                                <input type="checkbox" id="task1">
+                                <label for="task1">
+                                    <span class="task-title">Math Assignment</span>
+                                    <span class="task-due">Due tomorrow</span>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="task2">
+                                <label for="task2">
+                                    <span class="task-title">Buy textbooks</span>
+                                    <span class="task-due">Due in 3 days</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Recent Notes Widget -->
+                <div class="widget recent-notes">
+                    <div class="widget-header">
+                        <h2>Recent Notes</h2>
+                        <a href="notes.html" class="view-all">View All</a>
+                    </div>
+                    <div class="widget-content">
+                        <div class="note-card">
+                            <h3 class="note-title">Computer Science Notes</h3>
+                            <p class="note-preview">Algorithm complexity and Big O notation...</p>
+                            <div class="note-meta">
+                                <span class="note-date">Yesterday</span>
+                                <span class="note-subject">CS101</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Study Timer Widget -->
+                <div class="widget study-timer">
+                    <div class="widget-header">
+                        <h2>Study Timer</h2>
+                        <a href="pomodoro.html" class="view-all">Full Timer</a>
+                    </div>
+                    <div class="widget-content">
+                        <div class="timer-display">25:00</div>
+                        <div class="timer-controls">
+                            <button class="btn btn-sm btn-primary">
+                                <i class="fas fa-play"></i> Start
+                            </button>
+                            <button class="btn btn-sm btn-outline">
+                                <i class="fas fa-redo"></i> Reset
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../dashboard.js"></script>
+</body>
+</html>

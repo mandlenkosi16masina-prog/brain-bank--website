@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | BrainBank</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>Create Account</h1>
+                <p>Join BrainBank to manage your student life</p>
+            </div>
+            
+            <form class="auth-form" id="registerForm">
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" required>
+                    <i class="fas fa-user"></i>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <i class="fas fa-envelope"></i>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <i class="fas fa-lock"></i>
+                    <span class="toggle-password" id="togglePassword">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                    <div class="password-strength">
+                        <span class="strength-bar"></span>
+                        <span class="strength-text">Password strength: weak</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                    <i class="fas fa-lock"></i>
+                </div>
+                
+                <div class="form-group">
+                    <label for="university">University</label>
+                    <select id="university" name="university" required>
+                        <option value="">Select your university</option>
+                        <option value="uj">University of Johannesburg</option>
+                        <option value="ukzn">University of KwaZulu-Natal</option>
+                        <option value="uct">University of Cape Town</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <i class="fas fa-university"></i>
+                </div>
+                
+                <div class="form-group terms">
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="terms" required>
+                        <span class="checkmark"></span>
+                        I agree to the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="login.html">Login here</a></p>
+                </div>
+            </form>
+        </div>
+        
+        <div class="auth-image">
+            <img src="Images/register-hero.jpg" alt="Students collaborating" loading="lazy">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
